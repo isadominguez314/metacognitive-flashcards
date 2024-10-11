@@ -10,4 +10,4 @@ This web app can be used as a study tool that enhances metacognition while study
 4. In a terminal, navigate to the frontend and run `npm start` to run the frontend
 
 ## Using the App 
-To get started, enter the name of a study set in the "Study Set Name" field. If it is a new set, you can create from scratch, and if the set already exists you will be able to add more flashcards to it. When you are ready to study, click the study button with the input still set to your desired flashcard set. Follow the directions on the screen and enjoy studying! 
+To get started, enter the name of a study set in the "Study Set Name" field. If it is a new set, you can create from scratch, and if the set already exists you will be able to add more flashcards to it. Feel free to use the "tryme" set if you don't want to make one. When you are ready to study, click the study button with the input still set to your desired flashcard set. Follow the directions on the screen and enjoy studying! 
