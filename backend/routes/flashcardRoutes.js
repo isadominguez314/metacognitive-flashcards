@@ -57,4 +57,19 @@ router.put('/:id', async (req, res) => {
   }
 });
 
+// Update all flashcards for a class
+router.put('/reset/:className', async (req, res) => {
+  try {
+      const result = await Flashcard.updateMany(
+          { className: req.params.className },
+          { $set: { confidence: 3, correct: false } }
+      );
+      res.json({ message: 'Flashcards reset successfully', updatedCount: result.nModified });
+  } catch (error) {
+      console.error('Error resetting flashcards:', error);
+      res.status(500).json({ message: 'Failed to reset flashcards' });
+  }
+});
+
+
 module.exports = router;

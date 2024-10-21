@@ -64,6 +64,7 @@ function Study() {
         getFlashcards();
     }, [className]);
 
+
     // retrieve flashcard information from database 
     function getFlashcards() {
         axios.get(`http://localhost:5001/api/flashcards/${className}`)
@@ -127,6 +128,8 @@ function Study() {
             setUserInput('');
             setConfidence('');
         } else {
+            setUserInput('');
+            setConfidence('');
             setRestartSet(true);
         }
     };
@@ -153,7 +156,7 @@ function Study() {
             })
         }
         
-        //Ask for confidence rating and update the database
+        // Ask for confidence rating and update the database
         if (confidence) {
             updateConfidence(confidence);
         }
@@ -180,11 +183,27 @@ function Study() {
         });
     };
 
+    // start the deck over so all cards have confidence level 3 and are marked incorrect
+    const resetFlashcards = () => {
+        axios.put(`http://localhost:5001/api/flashcards/reset/${className}`)
+            .then(response => {
+                console.log('Flashcards reset:', response.data);
+                getFlashcards();  // Reload flashcards to reflect the reset
+            })
+            .catch(error => {
+                console.error('Error resetting flashcards:', error);
+            });
+    };
+    
+
     return (
         <Box margin={5} align="center">
             <Typography sx={{ mb: 5}} variant="h5"> Studying "{className}" Flashcard Set </Typography>
             {workingFlashcards.length === 0 && (
-                <Typography variant = "h5"> ALL DONE! </Typography>
+                <Box>
+                     <Typography variant = "h5" sx={{ mb: 5 }}> ALL DONE! </Typography>
+                     <Button variant="contained" onClick={resetFlashcards} > Start Over </Button> 
+                </Box>
             )}
             {workingFlashcards.length > 0 && (
                 <Stack spacing={2}>
@@ -196,6 +215,7 @@ function Study() {
                             value={userInput}
                             onChange={e => setUserInput(e.target.value)}
                             size="small"
+                            disabled={restartSet}
                         />
                         <Button onClick={handleSubmit} size="small" disabled={restartSet}>Submit</Button>
                     </Box>

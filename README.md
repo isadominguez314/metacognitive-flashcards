@@ -3,6 +3,9 @@
 ## Overview 
 This web app can be used as a study tool that enhances metacognition while studying. It will take into account the perceived and confidence levels of each term you study and ensure that you prioritize studying terms that are less familiar and more important. I hope you enjoy! 
 
+## Disclaimer 
+Right now, this web app only works on my local machine due to the nature of the database (it is not a cloud database). I am working on a demo video to showcase the app's functionality and hope to extend it to be usable by others in the future! 
+
 ## Running the App
 1. Clone the repository 
 2. Run `npm install` in terminal 
