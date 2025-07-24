@@ -26,9 +26,6 @@ function App() {
             <Button component={Link} variant="text" size="small" to={`/create/${className}`} >
               Create/Edit
             </Button>
-            {/* <Button component={Link} variant="text" size="small" to={`/edit`} >
-              Edit
-            </Button> */}
             <Button component={Link} variant="text" size="small" to={`/study/${className}`} >
               Study
             </Button>
